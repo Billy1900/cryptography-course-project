@@ -16,4 +16,6 @@ void LinearAttack_test();
 void Crack(unsigned short key_r16);
 void Dif_Attack_test();
 
+void SPN_Plus_test();
+
 #endif //TEST_UTILS_H
