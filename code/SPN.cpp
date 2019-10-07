@@ -1,19 +1,16 @@
-#include <iostream>
-using namespace std;
+#include "Utils.h"
 
-//int KEY[] = {0,0,1,1,1,0,1,0,1,0,0,1,0,1,0,0,1,1,0,1,0,1,1,0,0,0,1,1,1,1,1,1};
-//int HexKey[] = {0x3,0xa,0x9,0x4,0xd,0x6,0x3,0xf};
 unsigned int HexKey = 0x3a94d63f;
 
 unsigned short Sub_map_value[] = {0xE,0x4,0xD,0x1,0x2,0xF,0xB,0x8,0x3,0xA,0x6,0xC,0x5,0x9,0x0,0x7};
 
 unsigned short Per_map_value[] = {1,5,9,13,2,6,10,14,3,7,11,15,4,8,12,16};
 
-void Key_arrange(int i,unsigned short &Kr){
+void Key_arrange(int i,unsigned short &Kr,unsigned int Key){
     unsigned int mask = 0xffff0000;
     i -= 1;
     mask = mask>>(4*i);
-    Kr = (HexKey & mask)>>(4-i)*4;
+    Kr = (Key & mask)>>(4-i)*4;
 }
 
 void Substi(unsigned short Ur, unsigned short &Vr){
@@ -39,40 +36,31 @@ void Permutation(unsigned short Vr, unsigned short &w){
     w = res;
 }
 
-void SPN(unsigned short hex_x){
+void SPN(unsigned short hex_x, unsigned short &res, unsigned int Key){
     unsigned short w = hex_x;
     unsigned short Kr,Ur,Vr = 0x0000;
     int Nr = 4;
     for (int r = 1; r <= Nr-1; ++r) {
-        Key_arrange(r,Kr);
-        cout<<"Kr:"<<hex<<Kr<<endl;
-
+        Key_arrange(r, Kr, Key);
+        //cout<<"Kr:"<<hex<<Kr<<endl;
         Ur = Kr ^ w;
-        cout<<"Ur:"<<Ur<<endl;
-
+        //cout<<"Ur:"<<Ur<<endl;
         Substi(Ur, Vr);
-        cout<<"Vr:"<<Vr<<endl;
-
+        //cout<<"Vr:"<<Vr<<endl;
         Permutation(Vr,w);
-        cout<<"w:"<<w<<endl;
-
-        cout<<"-----"<<endl;
+        //cout<<"w:"<<w<<endl;
+        //cout<<"-----"<<endl;
     }
-
-    Key_arrange(Nr,Kr);
-    cout<<"w: "<<w<<endl;
-    cout<<"K4: "<<Kr<<endl;
+    Key_arrange(Nr, Kr, Key);
     Ur = Kr ^ w;
-    cout<<"Ur: "<<Ur<<endl;
     Substi(Ur,Vr);
-
-    Key_arrange(Nr+1,Kr);
-    unsigned short y = Vr ^ Kr;
-
-    cout<<"y:"<<y;
+    Key_arrange(Nr+1, Kr, Key);
+    res = Vr ^ Kr;
 }
 
-int main(){
+void SPN_test(){
     unsigned short hex_x = 0x26b7;
-    SPN(hex_x);
+    unsigned short res;
+    SPN(hex_x,res,HexKey);
+    cout<<"The result is: "<<hex<<res;
 }
