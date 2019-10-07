@@ -4,7 +4,8 @@ int main(){
     //SPN_test();
     clock_t start,end;
     start = clock();
-    LinearAttack_test();
+    //LinearAttack_test();
+    Dif_Attack_test();
     end = clock();
     cout<<(double)(end-start)<<"ms";
 }
