@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <ctime>
+#include <fstream>
+#include <memory.h>
 using namespace std;
 
 
@@ -17,5 +19,8 @@ void Crack(unsigned short key_r16);
 void Dif_Attack_test();
 
 void SPN_Plus_test();
+void SPN_Plus(unsigned long long x, unsigned long long &res);
+
+void RandTest();
 
 #endif //TEST_UTILS_H
