@@ -1,12 +1,6 @@
-#include <openssl/bn.h>
-#include <cstdio>
+#include "RSA_Utils.h"
 
-void RSA_Parameter(){
-    BIGNUM *p=BN_new();
-    BIGNUM *q=BN_new();
-    BIGNUM *n=BN_new();
-    BIGNUM *d=BN_new();
-    BIGNUM *e=BN_new();
+void RSA_Parameter(BIGNUM *p, BIGNUM *q, BIGNUM *n, BIGNUM *d, BIGNUM *e){
 
     BIGNUM *p_Cutone = BN_new();
     BIGNUM *q_Cutone = BN_new();
@@ -34,8 +28,9 @@ void RSA_Parameter(){
     while (!BN_mod_inverse(d,e,exp,ctx));//d
 
     printf("private key:\n");
-    printf("p:%s\n",BN_bn2hex(p));
-    printf("q:%s\n",BN_bn2hex(q));
+    //printf("p:%s\n",BN_bn2hex(p));
+    //printf("q:%s\n",BN_bn2hex(q));
+    printf("N:%s\n",BN_bn2hex(n));
     printf("d:%s\n",BN_bn2hex(d));
     printf("Public key:\n");
     printf("N:%s\n",BN_bn2hex(n));
@@ -47,4 +42,3 @@ void RSA_Parameter(){
     BN_free(p_Cutone);
     BN_free(exp);
 }
-
