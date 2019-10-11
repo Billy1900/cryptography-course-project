@@ -15,7 +15,7 @@ int main(void){
             
             Tree_Node_ptr T = NULL;
             clock_t start = clock();
-            openRainbowTableFile("/Users/cl/Desktop/RT_1000.txt", T);
+            openRainbowTableFile("/Users/cl/Desktop/RT_1000.txt", T);//文件路径修改
             clock_t end = clock();
             printf("Time cost : %lu",(end-start)/CLOCKS_PER_SEC);
             char md5Str[32] = {0};
