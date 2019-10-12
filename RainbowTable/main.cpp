@@ -2,7 +2,7 @@
 
 int main(void){
     int op;
-    printf("请选择模式: 1) 彩虹表生成 2) md5解密\n");
+    printf("1) Generate Rainbow Table 2) md5 Decrypt\n");
     scanf("%d",&op);
     switch (op) {
         case 1:
@@ -15,7 +15,7 @@ int main(void){
             
             Tree_Node_ptr T = NULL;
             clock_t start = clock();
-            openRainbowTableFile("/Users/cl/Desktop/RT_1000.txt", T);//文件路径修改
+            openRainbowTableFile("D:\\RainbowTable\\Tablelist.txt", T);//文件路径修改
             clock_t end = clock();
             printf("Time cost : %lu",(end-start)/CLOCKS_PER_SEC);
             char md5Str[32] = {0};
