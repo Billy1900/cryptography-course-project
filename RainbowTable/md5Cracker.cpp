@@ -2,7 +2,7 @@
 
 bool md5Cracker(unsigned char* md5code, Tree_Node_ptr &T){
     // 再依次假设其在彩虹表中的位置
-    printf("正在查找....\n");
+    printf("searching....\n");
     unsigned char* pass = md5code;
     for (int i = 0; i < nodeInChain; i++) {
         pass = Red(md5code, i, stringlength, NULL);
@@ -32,14 +32,14 @@ bool md5Cracker(unsigned char* md5code, Tree_Node_ptr &T){
                 }
             printf("head: %s\t tail: %s result:%s\n",matched->head, pass, chainHead);
             if (!flag){
-                printf("找到啦! 结果是:\n");
+                printf("found! The result is:\n");
                 printf("%s\n",chainHead);
                 return true;
             }
         }
     }
     // 匹配失败, 彩虹链中找不到这个md5
-    printf("嘤嘤嘤，解密失败!\n");
+    printf("sorry, we failed!\n");
     return true;
 }
 
