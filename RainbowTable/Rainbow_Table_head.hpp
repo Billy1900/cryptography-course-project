@@ -15,7 +15,7 @@
 #define LH +1
 #define EH 0
 #define RH -1
-#define rainbow_table_filename "/Users/cl/Desktop/RT_1000.txt"
+#define rainbow_table_filename "D:\\RainbowTable\\Tablelist.txt"
 
 typedef unsigned char* ElemType;
 typedef struct Tree_Node{
