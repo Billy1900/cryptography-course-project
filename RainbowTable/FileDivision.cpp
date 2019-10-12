@@ -4,10 +4,10 @@ bool openRainbowTableFile(char *filename, Tree_Node_ptr &T){
     // 先打开彩虹表文件
     FILE *fo = fopen(filename, "r");
     if (fo == NULL) {
-        printf("文件无法打开!\n");
+        printf("file can not open!\n");
         return false;
     }
-    printf("正在读取文件.....\n");
+    printf("file is loading.....\n");
     while (true){
         bool taller = 0;
         unsigned char * head= (unsigned char*)malloc(sizeof(unsigned char) * stringlength);
@@ -20,6 +20,6 @@ bool openRainbowTableFile(char *filename, Tree_Node_ptr &T){
         getc(fo);
         Tree_insert_AVL(T, head, tail, taller);
     }
-    printf("文件读取完成！");
+    printf("file extract succeed！");
     return true;
 }
