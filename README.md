@@ -1,3 +1,3 @@
-# cryptography-course-project
+# 华中科技大学密码学课程设计2019
 
 文档说明：report.pdf
